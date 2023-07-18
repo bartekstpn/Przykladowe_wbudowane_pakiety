@@ -31,7 +31,7 @@ while not end_program:
                 saldo += amount
                 history.append(f"Wykonano instrukcję saldo zasilono {amount} \n")
             elif changes == "-":
-                amount = float(input("Podaj kwotę, którą chcesz odjąć"))
+                amount = int(input("Podaj kwotę, którą chcesz odjąć"))
                 saldo -= amount
                 history.append(f"Wykonano infstrukcje saldo zmniejszono {amount} \n")
     if operation == WyborKomendy.SPRZEDAZ.value:

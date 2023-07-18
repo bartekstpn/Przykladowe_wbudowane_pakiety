@@ -63,10 +63,6 @@ class Educator:
     def __repr__(self):
         return f"Imię: {self.name} Nazwisko: {self.surname}"
 
-#TODO w domu potworzyli sobie klasy dla Nauczyciela i wychowawcy i zmienili je w naszej szkole
-
-
-
 our_school = {
     "klasy": {
         "1a": {
@@ -117,15 +113,14 @@ def find_class_teachers(class_number):
             found_teachers.append(teacher)
     return found_teachers
 
-def find_student_educator(name, surname):
-    found_class = []
-    for educator in our_school.get("klasy")[0:]:
-        if educator_name == educator.name and educator_surname == educator.surname:
-            print("znaleziono")
-
-
-
-#found_class += f"Wychowawca {educator_name} {educator_surname} ma pod opieką {}"
+def find_student_educator(name, surname, grade):
+    found_students = []
+    for educator in our_school.get("klasy")[grade]["wychowawca"]:
+        if educator_name == educator.name and educator_surname==educator.surname:
+            found_students += "Studenci pod opieką wychowawcy", educator_name, educator_surname, "to", our_school["klasy"][grade]["uczniowie"]
+            return found_students
+        else:
+            print("Nie znaleziono wychowawcy")
 
 
 def find_teachers_for_class(name, surname):
@@ -198,7 +193,9 @@ while not finish_program:
         elif manage_input == "4":
             educator_name = input("Podaj imię wychowawcy: ")
             educator_surname = input("Podaj nazwisko wychowawcy: ")
-            found = find_student_educator(educator_name, educator_surname)
+            grade = input("Podaj klasę wychowawcy: ")
+            found = find_student_educator(educator_name, educator_surname, grade)
+            print(found)
 
 
     elif main_guess == "3":

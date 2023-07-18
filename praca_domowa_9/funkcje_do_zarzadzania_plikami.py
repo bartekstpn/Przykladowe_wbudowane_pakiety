@@ -2,7 +2,6 @@ import json
 import re
 from _csv import reader
 
-
 def load_saldo_and_magazyn(file):
     with open(file) as opened_file:
         our_data = json.loads(opened_file.read())
