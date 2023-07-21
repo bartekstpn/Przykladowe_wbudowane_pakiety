@@ -27,20 +27,13 @@ while not end_program:
         # TODO dla was poprosić jeszcze o rodzaj operacji (czy dodajemy czy odejmujemy)
             changes = input("Chcesz dodać czy odjąć z konta? (-/+)")
             if changes == "+":
-                try:
-                    amount = float(input("Podaj kwotę, którą chcesz dodać"))
-                    saldo += amount
-                    history.append(f"Wykonano instrukcję saldo zasilono {amount} \n")
-                except ValueError:
-                    print("Błąd, musisz podać kwotę!")
-                    continue
+                amount = float(input("Podaj kwotę, którą chcesz dodać"))
+                saldo += amount
+                history.append(f"Wykonano instrukcję saldo zasilono {amount} \n")
             elif changes == "-":
-                try:
-                    amount = int(input("Podaj kwotę, którą chcesz odjąć"))
-                    saldo -= amount
-                    history.append(f"Wykonano infstrukcje saldo zmniejszono {amount} \n")
-                except ValueError:
-                    print("Błąd, musisz podać kwotę!")
+                amount = int(input("Podaj kwotę, którą chcesz odjąć"))
+                saldo -= amount
+                history.append(f"Wykonano infstrukcje saldo zmniejszono {amount} \n")
     if operation == WyborKomendy.SPRZEDAZ.value:
         print(magazyn)
         # przyklad dla Piotrka
