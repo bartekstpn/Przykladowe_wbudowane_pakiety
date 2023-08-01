@@ -18,6 +18,11 @@ plakat,czerwony,8,kij
 
 
 python reader.py in.csv out.csv 0,0,gitara     3,1,kubek     1,2,17     3,3,0
+
+gitara,3,7,0
+kanapka,12,5,kubek
+pedzel,17,34,5
+plakat,czerwony,8,0
 """
 
 import csv
@@ -35,17 +40,20 @@ def read_data_from_file(file):
 
 def change_data_in_our_matrix(matrix, incoming_data):
     data_to_change = incoming_data.split(",")
-    matrix[int(data_to_change[0])][int(data_to_change[1])] = data_to_change[2]
+    matrix[int(data_to_change[1])][int(data_to_change[0])] = data_to_change[2]
 
 
 def write_data_do_file(file, matrix):
-    with open(file, mode="w") as file:
+    with open(file, mode="w+") as file:
         writer = csv.writer(file)
         writer.writerows(matrix)
 
 
-matrix = read_data_from_file(file="zadanie_11.csv")
-for argument in sys.argv[3:]:
-    change_data_in_our_matrix(matrix, argument)
+matrix = read_data_from_file(file="in.csv")
+try:
+    for argument in sys.argv[3:]:
+        change_data_in_our_matrix(matrix, argument)
+except IndexError:
+    print("Podano za mało argumentów")
 print(matrix)
 write_data_do_file(sys.argv[2], matrix)
